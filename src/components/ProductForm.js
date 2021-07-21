@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import axios from 'axios';
-export default () => {
+const ProductForm = props => {
     //keep track of what is being typed via useState hook
     const [title, setTitle] = useState("");
     const [price, setPrice] = useState("");
@@ -20,20 +20,25 @@ export default () => {
     }
     //onChange to update title and price, description
     return (
-        <form onSubmit={onSubmitHandler}>
-            <p>
-                <label>Title</label>
-                <input type="text" onChange={(e) => setTitle(e.target.value)} value={title} />
-            </p>
-            <p>
-                <label>Price</label>
-                <input type="number" onChange={(e) => setPrice(e.target.value)} value={price} />
-            </p>
-            <p>
-                <label>Description</label>
-                <textarea name="" id="" cols="30" rows="10" type="text" onChange={(e) => setDescription(e.target.value)} value={description} />
-            </p>
-            <input type="submit" />
-        </form>
+        <div className="w-50 p-4 rounded mx-auto ">
+            <h3 className="text-center">Product Manger</h3>
+            <form onSubmit={onSubmitHandler}>
+                <div className="form-group">
+                    <label className="h6">Title</label>
+                    <input className="form-control" type="text" onChange={(e) => setTitle(e.target.value)} value={title} />
+                </div>
+                <div className="form-group">
+                    <label className="h6">Price</label>
+                    <input className="form-control" type="number" onChange={(e) => setPrice(e.target.value)} value={price} />
+                </div>
+                <div className="form-group">
+                    <label className="h6">Description</label>
+                    <textarea className="form-control" name="" id="" cols="30" rows="10" type="text" onChange={(e) => setDescription(e.target.value)} value={description} />
+                </div>
+                <input className="btn btn-sm btn-outline-success mt-2" type="submit" />
+            </form >
+        </div>
     )
 }
+
+export default ProductForm;
